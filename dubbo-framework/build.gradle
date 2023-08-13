@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'com.wenllar'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
+    compile group: 'javax.servlet', name: 'javax.servlet-api',version: '3.1.0'
+    // core
+    compile group: 'org.springframework',  name: 'spring-core', version: '5.2.24.RELEASE'
+    // beans
+    compile group: 'org.springframework',  name: 'spring-beans', version: '5.2.24.RELEASE'
+    // aop
+    compile group: 'org.springframework',  name: 'spring-aop', version: '5.2.24.RELEASE'
+    // context
+    compile group: 'org.springframework',  name: 'spring-context', version: '5.2.24.RELEASE'
+    // mvc
+    compile group: 'org.springframework',  name: 'spring-webmvc', version: '5.2.24.RELEASE'
+    // tomcat - 从springboot-native中继承
+    compileOnly group: 'org.apache.tomcat.embed',  name: 'tomcat-embed-core', version: '9.0.78'
+    // Jetty
+    compile group: 'org.eclipse.jetty',  name: 'jetty-server', version: '9.4.50.v20221201'
+    // jetty-servlet
+    compile  group: 'org.eclipse.jetty',  name: 'jetty-servlet', version: '9.4.50.v20221201'
+
+}
