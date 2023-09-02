@@ -4,4 +4,6 @@ include 'order-service'
 include 'sock-service'
 include 'dubbo-framework'
 include 'transaction-framework'
+include 'transaction-manager'
+include 'holder'
 

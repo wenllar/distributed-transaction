@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'com.wenllar'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // core
+    compile group: 'org.springframework',  name: 'spring-core', version: '5.2.24.RELEASE'
+    // beans
+    compile group: 'org.springframework',  name: 'spring-beans', version: '5.2.24.RELEASE'
+    // aop
+    compile group: 'org.springframework',  name: 'spring-aop', version: '5.2.24.RELEASE'
+    // context
+    compile group: 'org.springframework',  name: 'spring-context', version: '5.2.24.RELEASE'
+    // aspectJ
+    compile group: 'org.aspectj' , name: 'aspectjweaver', version: '1.9.20'
+    compile group: 'org.aspectj' , name: 'aspectjrt', version: '1.9.20'
+
+    compile project(':dubbo-framework')
+}

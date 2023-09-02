@@ -32,5 +32,6 @@ dependencies {
     compile group: 'org.eclipse.jetty',  name: 'jetty-server', version: '9.4.50.v20221201'
     // jetty-servlet
     compile  group: 'org.eclipse.jetty',  name: 'jetty-servlet', version: '9.4.50.v20221201'
+    compile project(':holder')
 
 }

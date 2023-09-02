@@ -1,15 +1,18 @@
-package com.wenllar.service;
+package com.wenllar.mapper;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.wenllar.dataObject.User;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-public interface UserService extends IService<User> {
 
+@Mapper
+public interface UserMapper extends BaseMapper<User> {
 
     List<User> selectAllFromDefaultDataSource();
+
     List<User> selectAllFromDataSource();
+
     List<User> selectAllFromHikariDataSource();
-    String test(String name);
 }

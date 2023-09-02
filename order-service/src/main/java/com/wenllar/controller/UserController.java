@@ -1,6 +1,6 @@
 package com.wenllar.controller;
 
-import com.wenllar.service.UserService;
+import com.wenllar.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    OrderService userService;
 
     @RequestMapping("/test")
     public String test(String name){
         System.out.println("接受到test请求");
-        userService.test(name);
-        return "Hello: " + name;
+        String result = userService.createOrder(name);
+        return "Hello: " + result;
     }
 }

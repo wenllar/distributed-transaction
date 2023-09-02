@@ -24,5 +24,20 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.6.4'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.6.4'
+    // 切面
+   // compile  group: 'org.springframework', name: 'spring-aspects', version: '5.1.6.RELEASE'
+    // 事务
+    compile group: 'org.springframework', name: 'spring-tx', version: '5.1.6.RELEASE'
+    // jdbc 驱动类
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.26'
+    // hikariCP连接池
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
+    // mybatis-plus
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.5.3.1'
     compile project(':dubbo-framework')
+    compile project(':transaction-framework')
+
+
 }

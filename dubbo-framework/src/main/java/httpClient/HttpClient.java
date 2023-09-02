@@ -1,5 +1,8 @@
 package httpClient;
 
+
+import com.wenllar.holder.GroupIdHolder;
+import com.wenllar.holder.constant.Constants;
 import invocation.Invocation;
 import loadBalance.LoadBalance;
 
@@ -15,6 +18,7 @@ public class HttpClient {
      * 双重检测
      */
     private static volatile HttpClient httpClient = null;
+
 
     private HttpClient() {
     }
@@ -35,19 +39,29 @@ public class HttpClient {
 
         System.out.println(String.format("Host: %s, port:%s", remoteUrl.getHost(), remoteUrl.getPort()));
         URL url = new URL("http", remoteUrl.getHost(), remoteUrl.getPort(), "/hello");
-        return this.sendHttpRequest(url, invocation);
+        return this.sendHttpRequest(url, invocation,false);
     }
 
+    public String sendWithHeader(Invocation invocation) throws IOException, ClassNotFoundException {
+        registry.URL remoteUrl = getOneUrlFromRemoteRegistry(invocation.getInterfaceName());
+
+        System.out.println(String.format("Host: %s, port:%s", remoteUrl.getHost(), remoteUrl.getPort()));
+        URL url = new URL("http", remoteUrl.getHost(), remoteUrl.getPort(), "/hello");
+        return this.sendHttpRequest(url, invocation,true);
+    }
     public String send(String host, int port, Invocation invocation) throws IOException, ClassNotFoundException {
         URL url = new URL("http", host, port, "/hello");
-        return this.sendHttpRequest(url, invocation);
+        return this.sendHttpRequest(url, invocation, false);
 
     }
 
-    private String sendHttpRequest(URL url, Invocation invocation) throws IOException {
+    private String sendHttpRequest(URL url, Invocation invocation, boolean withHeader) throws IOException {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         conn.setUseCaches(false);
+        if(withHeader){
+            conn.setRequestProperty(Constants.GROUP_ID, GroupIdHolder.get());
+        }
         // 请求超时5秒
         conn.setConnectTimeout(5000);
         //发送Post请求
